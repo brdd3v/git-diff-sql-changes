@@ -1,0 +1,21 @@
+{
+  "DML": ["((select\\s+\\S+\\s+from\\s+\\S+)|",
+          "(insert\\s+into\\s+\\S+)|",
+          "(insert\\s+ignore\\s+into\\s+\\S+)|",
+          "(replace\\s+into\\s+\\S+)|",
+          "(update\\s+\\S+\\s+set)|",
+          "(delete\\s+from\\s+\\S+))"],
+
+  "Comments": "--.*|#.*|(((\\/\\*)+?[\\w\\W]+?(\\*\\/)+))",
+
+  "Index": ["(drop\\s+index)|",
+            "(create\\s+index)|",
+            "(create\\s+unique\\s+index)"],
+
+  "PK": "primary\\s+key",
+
+  "Engine": ["engine\\s*=\\s*(MyISAM|MERGE|InnoDB|",
+             "MEMORY|ARCHIVE|BLACKHOLE|CSV|FEDERATED)"],
+
+  "Privilege": "^(grant|revoke)\\s+\\S+"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "DML": {
+      "type": ["array", "string"]
+    },
+    "Comments": {
+      "type": ["array", "string"]
+    },
+    "Index": {
+      "type": ["array", "string"]
+    },
+    "PK": {
+      "type": ["array", "string"]
+    },
+    "Engine": {
+      "type": ["array", "string"]
+    },
+    "Privilege": {
+      "type": ["array", "string"]
+    }
+  },
+  "required": [
+    "DML",
+    "Comments",
+    "Index",
+    "PK",
+    "Engine",
+    "Privilege"
+  ]
+}

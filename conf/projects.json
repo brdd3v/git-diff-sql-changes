@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {"name": "biblioteq",
+      "check": false,
+      "url": "https://github.com/textbrowser/biblioteq"},
+    {"name": "biosql",
+      "check": true,
+      "url": "https://github.com/biosql/biosql"},
+    {"name":  "cpg",
+      "check": false,
+      "url": "https://github.com/coppermine-gallery/cpg1.6.x"},
+    {"name": "ejabberd",
+      "check": false,
+      "url": "https://github.com/processone/ejabberd"},
+    {"name": "openmrs-core",
+      "check": false,
+      "url": "https://github.com/openmrs/openmrs-core"},
+    {"name": "pdns",
+      "check": false,
+      "url": "https://github.com/PowerDNS/pdns"},
+    {"name": "roundcubemail",
+      "check": false,
+      "url": "https://github.com/roundcube/roundcubemail"}
+  ]
+}

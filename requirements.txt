@@ -1,0 +1,9 @@
+GitPython
+jsonschema
+pandas
+tqdm
+pylint
+pytest
+pytest-dependency
+pytest-order
+requests
