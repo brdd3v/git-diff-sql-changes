@@ -54,7 +54,7 @@ def test_get_commit_file_diff_text(get_repo_path):
     name, path = get_repo_path
     test_data = commit_file_diff_text_scenarios.get(name, None)
     if test_data is None:
-        pytest.skip(f"Repo (or data) for the project '{name}' is not prepared")
+        pytest.skip(f"Test data for the project '{name}' is not prepared")
     commit, sql_file, diff_text_expected = test_data
     repo_cmd = git.cmd.Git(path)
     diff_text = main.get_commit_file_diff_text(repo_cmd, commit, sql_file)
@@ -62,7 +62,9 @@ def test_get_commit_file_diff_text(get_repo_path):
 
 
 @pytest.mark.dependency(name="check_modify_changed_blocks",
-                        depends=["json_valid_schema_regex"],
+                        depends=["json_valid_schema_regex", "check_regex_privilege",
+                                 "check_regex_engine", "check_regex_primary_key",
+                                 "check_regex_index", "check_regex_dml", "check_regex_comments"],
                         scope="session")
 @pytest.mark.parametrize(
     "blocks_lst, categories_lst, blocks_lst_expected",
@@ -109,7 +111,7 @@ def test_get_change_type(get_repo_path):
     name, path = get_repo_path
     test_data = change_type_scenarios.get(name, None)
     if test_data is None:
-        pytest.skip(f"Repo (or data) for the project '{name}' is not prepared")
+        pytest.skip(f"Test data for the project '{name}' is not prepared")
     commit, type_file_lst_expected = test_data
     repo_cmd = git.cmd.Git(path)
     types_files = main.get_change_type(repo_cmd, commit)
