@@ -1,4 +1,4 @@
-# sql-chg
+# Git-Diff SQL-Changes
 
 A simple project, the purpose of which is to obtain information about changes in SQL files in Git Repos.
 
