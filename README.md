@@ -6,7 +6,9 @@ A simple project, the purpose of which is to obtain information about changes in
 
 ## Supported changes
 
- * __Whitespace__ - Category of changes related to blank lines, spaces, etc.
+ * __Whitespace__ - Category of changes associated only with blank lines, spaces, etc.
+    > Note: Subsequent changes may include this category,<br/> 
+      but the files then will not appear in the "whitespace" column
  * __DML__ - Changes in DML (Data Manipulation Language)
  * __Index__ - Index Changes
  * __Comments__ - Changes associated with single-line or multi-line comments
