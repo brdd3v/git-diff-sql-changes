@@ -1,5 +1,8 @@
+import os
 import git
 import pytest
+
+import prep
 
 
 @pytest.mark.order(8)
@@ -26,3 +29,12 @@ def test_is_master_branch(get_repo_path):
     _, path = get_repo_path
     repo = git.Repo(path)
     assert repo.active_branch.name == "master"
+
+
+@pytest.mark.order(11)
+def test_check_create_results_folder():
+    results_dir_path = os.path.join(prep.HOME_DIR, "results")
+    assert not os.path.exists(results_dir_path)
+    prep.check_create_results_folder(results_dir_path)
+    assert os.path.exists(results_dir_path)
+    os.rmdir(results_dir_path)

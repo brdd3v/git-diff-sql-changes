@@ -39,7 +39,7 @@ commit_file_diff_text_scenarios = {
 @pytest.mark.dependency(name="get-commits-check-num",
                         depends=["branch-check"],
                         scope="session")
-@pytest.mark.order(11)
+@pytest.mark.order(12)
 def test_get_commits_check_num_gt_zero(get_repo_path):
     _, path = get_repo_path
     repo_cmd = git.cmd.Git(path)
@@ -50,7 +50,7 @@ def test_get_commits_check_num_gt_zero(get_repo_path):
 @pytest.mark.dependency(name="get-commit-file-diff-text",
                         depends=["repo-validity-check"],
                         scope="session")
-@pytest.mark.order(12)
+@pytest.mark.order(13)
 def test_get_commit_file_diff_text(get_repo_path):
     name, path = get_repo_path
     test_data = commit_file_diff_text_scenarios.get(name, None)
@@ -85,7 +85,7 @@ def test_get_commit_file_diff_text(get_repo_path):
       ["DML", "Comments", "Index", "PK", "Engine", "Privilege"],
       ["node_group_id    int(10) unsigned default '0' not null,"])]
 )
-@pytest.mark.order(13)
+@pytest.mark.order(14)
 def test_check_modify_changed_blocks(blocks_lst, categories_lst, blocks_lst_expected):
     data_regex = prep.get_json_data_regex()
     for category in categories_lst:
@@ -98,7 +98,7 @@ def test_check_modify_changed_blocks(blocks_lst, categories_lst, blocks_lst_expe
     [(["CREATE TABLE tab1(\ncolumn1 type1,\ncolumn2 type2,\ncolumn3 type3\n);"], 5),
      (["block_1_line_1\nblock_1_line_2\n", "block_2_line_1\n"], 3)]
 )
-@pytest.mark.order(14)
+@pytest.mark.order(15)
 def test_calculate_total_block_diff_size(block, total_block_size):
     size = main.calculate_total_block_diff_size(block)
     assert size == total_block_size
@@ -107,7 +107,7 @@ def test_calculate_total_block_diff_size(block, total_block_size):
 @pytest.mark.dependency(name="type-change-check",
                         depends=["repo-validity-check"],
                         scope="session")
-@pytest.mark.order(15)
+@pytest.mark.order(16)
 def test_get_change_type(get_repo_path):
     name, path = get_repo_path
     test_data = change_type_scenarios.get(name, None)
@@ -130,13 +130,13 @@ def test_get_change_type(get_repo_path):
        ("R", "config/config.yml"),
        ("A", "tests/db/test_db.py"),
        ("A", "tests/db/test_data.sql")], 3)])
-@pytest.mark.order(16)
+@pytest.mark.order(17)
 def test_keep_only_sql_files(type_files_lst, sql_files_num):
     res = main.keep_only_sql_files(type_files_lst)
     assert len(res) == sql_files_num
 
 
-@pytest.mark.order(17)
+@pytest.mark.order(18)
 def test_df_preparation():
     commits_info_txt = """
     a20812702f34235202384c23842805b923293841;2008-03-28T15:01:43+00:00;2008-03-28T15:01:43+00:00
@@ -153,7 +153,7 @@ def test_df_preparation():
     assert df['DML'].values.tolist() == [set(), set(), set()]
 
 
-@pytest.mark.order(18)
+@pytest.mark.order(19)
 def test_df_population():
     df = pd.DataFrame.from_dict({"column_1": [10, 20, 30],
                                  "column_2": ["text_1", "text_2", "text_3"]})
@@ -167,7 +167,7 @@ def test_df_population():
     assert df.iloc[2]['DML'] == {'sql_file_3', 'sql_file_4'}
 
 
-@pytest.mark.order(19)
+@pytest.mark.order(20)
 def test_check_for_renaming():
     files = [("R100", "sql_file_1"), ("A", "sql_file_2"), ("R80", "sql_file_3"),
              ("M", "sql_file_4"), ("R100", "sql_file_5"), ("D", "sql_file_6")]
@@ -186,7 +186,7 @@ def test_check_for_renaming():
       "a5811031e55664132b794b292b1149e626268c06", 3, 1, 52),
      ("PowerDNS", "pdns", "f7676f61b3cefa3b2fab4a7d11df27033cc8ec97",
       "0bc2d021f5d1bea4cb63941c4d490f971d783a0d", 0, 1, 2)])
-@pytest.mark.order(20)
+@pytest.mark.order(21)
 def test_changed_blocks_preparation(user, repo, commit_1, commit_2,
                                     file_id, blocks_num, total_diff_size):
     try:

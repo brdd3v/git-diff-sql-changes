@@ -22,9 +22,16 @@ def get_json_data_projects():
 
 
 def check_create_repos_folder():
-    if not os.path.exists(os.path.join(HOME_DIR, "repos")):
-        print("Folder 'repos' created.")
-        os.mkdir(os.path.join(HOME_DIR, "repos"))
+    repos_dir_path = os.path.join(HOME_DIR, "repos")
+    if not os.path.exists(repos_dir_path):  # pragma: no cover
+        print("Folder 'repos' created.")    # will be created (conftest)
+        os.mkdir(repos_dir_path)
+
+
+def check_create_results_folder(results_dir_path):
+    if not os.path.exists(results_dir_path):
+        print("Folder 'results' created.")
+        os.mkdir(results_dir_path)
 
 
 def check_clone_repos(projects_json_lst):
@@ -43,5 +50,5 @@ def main():
         check_clone_repos(projects_json_lst)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

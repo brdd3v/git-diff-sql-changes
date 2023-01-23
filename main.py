@@ -122,8 +122,7 @@ def calculate_total_block_diff_size(blocks_lst):
 def main():
     projects_json_lst = prep.get_json_data_projects()
     results_dir_path = os.path.join(HOME_DIR, "results")
-    if (len(projects_json_lst) > 0) and (not os.path.exists(results_dir_path)):
-        os.mkdir(results_dir_path)
+    prep.check_create_results_folder(results_dir_path)
 
     data_regex = prep.get_json_data_regex()
 
@@ -187,5 +186,5 @@ def main():
         df.to_csv(os.path.join(results_dir_path, f'{prj["name"]}.csv'), index=False)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

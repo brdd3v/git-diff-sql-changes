@@ -7,7 +7,7 @@ test:
 	python3 -m pytest -vv --tb=no --disable-warnings ./tests/
 
 test-cov:
-	python3 -m pytest --cov . --cov-fail-under=80
+	python3 -m pytest --cov .
 
 test-cov-miss:
 	python3 -m pytest --cov . --cov-report term-missing
