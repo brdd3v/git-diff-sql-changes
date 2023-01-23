@@ -20,7 +20,7 @@ def test_check_regex_comments():
     -- Delete
     Keep 5 -- Delete
     /*  Delete
-    
+
     Delete
     */ Keep 6
     Keep 7 -- Delete
@@ -29,7 +29,7 @@ def test_check_regex_comments():
     Keep 9 #Delete
     Keep 10 -- / Delete
     /*Delete  */ Keep 11
-    /* Delete*/ Keep 12 /* Delete */ 
+    /* Delete*/ Keep 12 /* Delete */
     """
     data_regex = prep.get_json_data_regex()
     text_mod = re.sub(data_regex['Comments'], "", text, flags=re.M)
@@ -87,7 +87,7 @@ def test_check_regex_index():
 def test_check_regex_primary_key():
     text = """
     value            INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT;
-    
+
     cache_id integer not null primary key,
     """
     data_regex = prep.get_json_data_regex()
