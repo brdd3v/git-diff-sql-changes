@@ -23,7 +23,8 @@ commit_file_diff_text_scenarios = {
     "biosql": ["0ca2cd376268ef0a5910660dc6b9260ef6031234",
                "sql/biosql-ora/BS-create-Biosql-usersyns.sql",
                "0ca2cd3 Moved linesize setting into BS-defs.\n"
-               "diff --git a/sql/biosql-ora/BS-create-Biosql-usersyns.sql b/sql/biosql-ora/BS-create-Biosql-usersyns.sql\n"
+               "diff --git a/sql/biosql-ora/BS-create-Biosql-usersyns.sql "
+               "b/sql/biosql-ora/BS-create-Biosql-usersyns.sql\n"
                "index 9c5b2f6..427fb33 100644\n"
                "--- a/sql/biosql-ora/BS-create-Biosql-usersyns.sql\n"
                "+++ b/sql/biosql-ora/BS-create-Biosql-usersyns.sql\n"
@@ -188,8 +189,11 @@ def test_check_for_renaming():
 @pytest.mark.order(20)
 def test_changed_blocks_preparation(user, repo, commit_1, commit_2,
                                     file_id, blocks_num, total_diff_size):
-    resp = requests.get(f"https://api.github.com/repos/{user}/"
-                        f"{repo}/compare/{commit_1}...{commit_2}")
+    try:
+        resp = requests.get(f"https://api.github.com/repos/{user}/"
+                            f"{repo}/compare/{commit_1}...{commit_2}")
+    except requests.exceptions.ConnectionError as e:
+        pytest.skip(f"Connection error: {e}")
     resp_json = resp.json()
     diff_text = resp_json['files'][file_id]['patch']
     changed_blocks_lst = main.prepare_changed_blocks(diff_text)

@@ -9,7 +9,7 @@ HOME_DIR = os.getcwd()
 def get_json_data(file_name):
     with open(os.path.join(HOME_DIR, "conf", file_name), encoding="utf-8") as json_f:
         json_data = json.load(json_f)
-        return json_data   
+        return json_data
 
 
 @pytest.mark.dependency(name="json_valid_schema_projects", scope="session")
