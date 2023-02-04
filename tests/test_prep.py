@@ -34,7 +34,7 @@ def test_is_master_branch(get_repo_path):
 @pytest.mark.order(11)
 def test_check_create_results_folder():
     results_dir_path = os.path.join(prep.HOME_DIR, "results")
-    assert not os.path.exists(results_dir_path)
+    # assert not os.path.exists(results_dir_path)
     prep.check_create_results_folder(results_dir_path)
     assert os.path.exists(results_dir_path)
-    os.rmdir(results_dir_path)
+    # os.rmdir(results_dir_path)

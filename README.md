@@ -3,6 +3,22 @@
 A simple project, the purpose of which is to obtain information about changes in SQL files in Git Repos.
 
 
+## Setup and Run
+
+1. Create a virtual environment and install dependencies:
+
+```
+pip3 install -r requirements.txt
+```
+
+2. Select projects or add new ones in the [projects.json](/conf/projects.json) file
+
+3. Run the scripts:
+```
+python3 prep.py
+python3 main.py
+```
+
 
 ## Supported changes
 

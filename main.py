@@ -127,7 +127,12 @@ def main():
     data_regex = prep.get_json_data_regex()
 
     for prj in projects_json_lst:
-        repo_cmd = git.cmd.Git(os.path.join(HOME_DIR, "repos", prj["name"]))
+        prj_repo_path = os.path.join(HOME_DIR, "repos", prj["name"])
+        if not os.path.exists(prj_repo_path):
+            print(f"The repository for project '{prj['name']}' has not been cloned. "
+                   "Run the 'prep.py' script first.")
+            continue
+        repo_cmd = git.cmd.Git(prj_repo_path)
         res = get_commits(repo_cmd)
         df = prepare_df(res)
 
