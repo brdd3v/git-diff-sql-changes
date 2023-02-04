@@ -8,3 +8,4 @@ pytest-dependency==0.5.1
 pytest-order==1.0.1
 pytest-cov==3.0.0
 requests==2.28.1
+pandera==0.13.3

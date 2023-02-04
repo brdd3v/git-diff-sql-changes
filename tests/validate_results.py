@@ -2,8 +2,7 @@ import os
 import glob
 import datetime
 import pandas as pd
-import pandera as pa
-from pandera import Column, Check
+from pandera import DataFrameSchema, Column, Check
 
 
 HOME_DIR = os.getcwd()
@@ -22,7 +21,7 @@ def check_date_columns(c):
     return c >= pd.to_datetime("01/01/2000  01:01:01 PM")
 
 
-schema = pa.DataFrameSchema({
+schema = DataFrameSchema({
     "commit":           Column(str, [Check.str_length(40),
                                      Check.str_matches(r'^[a-z,0-9]+$')]),
     "commit_date":      Column(datetime.datetime, Check(lambda c: check_date_columns)),
