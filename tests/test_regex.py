@@ -52,7 +52,7 @@ def test_check_regex_dml():
     select * from table;
     """
     data_regex = prep.get_json_data_regex()
-    queries_lst = list()
+    queries_lst = []
     for line in text.split("\n"):
         if re.search(data_regex['DML'], line, re.I):
             queries_lst.append(line)
@@ -72,7 +72,7 @@ def test_check_regex_index():
     DROP INDEX IF EXISTS index_customer_name ON info.customers;
     """
     data_regex = prep.get_json_data_regex()
-    queries_lst = list()
+    queries_lst = []
     for line in text.split("\n"):
         if re.search(data_regex['Index'], line, re.I):
             queries_lst.append(line)
@@ -91,7 +91,7 @@ def test_check_regex_primary_key():
     cache_id integer not null primary key,
     """
     data_regex = prep.get_json_data_regex()
-    queries_lst = list()
+    queries_lst = []
     for line in text.split("\n"):
         if re.search(data_regex['PK'], line, re.I):
             queries_lst.append(line)
@@ -115,7 +115,7 @@ def test_check_regex_engine():
     ALTER TABLE tab_name ENGINE=InnoDB;
     """
     data_regex = prep.get_json_data_regex()
-    queries_lst = list()
+    queries_lst = []
     for line in text.split("\n"):
         if re.search(data_regex['Engine'], line, re.I):
             queries_lst.append(line)
@@ -136,7 +136,7 @@ def test_check_regex_privilege():
     revoke all on employees from user2;
     """
     data_regex = prep.get_json_data_regex()
-    queries_lst = list()
+    queries_lst = []
     for line in text.split("\n"):
         if re.search(data_regex['Privilege'], line.strip(), re.I):
             queries_lst.append(line)

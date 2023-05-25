@@ -17,9 +17,9 @@ def prepare_changed_blocks(diff_txt):
            diff_txt_lst if line.startswith("@@ ")] + [len(diff_txt_lst)]
     blocks_lst = [diff_txt_lst[id1+1:id2] for id1, id2 in zip(ids, ids[1:])]
     # modify blocks (make lowercase; remove +/-, leading/trailing chars and empty lines)
-    blocks_mod_lst = list()
+    blocks_mod_lst = []
     for block in blocks_lst:
-        block_mod = list()
+        block_mod = []
         for line in block:
             if line.startswith("+") or line.startswith("-"):
                 line = line[1:].strip()
@@ -31,9 +31,9 @@ def prepare_changed_blocks(diff_txt):
 
 
 def check_modify_changed_blocks(blocks_lst, regex, category):
-    blocks_mod_lst = list()
+    blocks_mod_lst = []
     for block in blocks_lst:
-        block_mod = list()
+        block_mod = []
         # remove single-line and multi-line comments
         if category == "Comments":
             block = re.sub(regex, "", block, flags=re.M)
@@ -57,8 +57,8 @@ def populate_df(df, idx, sql_files, change_type):
 
 
 def check_for_renaming(type_files_lst):
-    renamed_files = list()
-    other_renamed_files = list()
+    renamed_files = []
+    other_renamed_files = []
     for el in type_files_lst:
         if el[0].startswith("R"):
             if el[0].startswith("R100"):
@@ -69,7 +69,7 @@ def check_for_renaming(type_files_lst):
 
 
 def get_change_type(repo_cmd, commit):
-    type_files_lst = list()
+    type_files_lst = []
     command = ["git", "show", commit, "--oneline", "--name-status"]
     res = repo_cmd.execute(command)
     change_files_lst = res.split("\n")[1:]
