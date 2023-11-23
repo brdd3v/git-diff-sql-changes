@@ -37,6 +37,6 @@ python3 main.py
 
 ## TODOs
 
- * Reduce False Positives
+ * Reduce FP, FN
  * Add other categories: Foreign Keys, Typos, Type Changes, etc.
 
